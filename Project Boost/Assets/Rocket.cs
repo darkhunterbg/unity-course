@@ -28,6 +28,9 @@ public class Rocket : MonoBehaviour
     [SerializeField]
     float levelLoadDelay = 1.0f;
 
+    [SerializeField]
+    bool collisionEnabled = true;
+
     Rigidbody rigidBbody;
     AudioSource audioSource;
 
@@ -55,6 +58,9 @@ public class Rocket : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (!collisionEnabled)
+            return;
+
         if (state != State.Alive)
             return;
 
@@ -98,16 +104,33 @@ public class Rocket : MonoBehaviour
 
     private void LoadNextScene()
     {
-        SceneManager.LoadScene(1);
+        int scene = SceneManager.GetActiveScene().buildIndex;
+        scene++;
+        if (SceneManager.sceneCountInBuildSettings == scene)
+            scene = 0;
+
+        SceneManager.LoadScene(scene);
     }
 
     private void ProcesInput()
     {
+        if (Debug.isDebugBuild)
+            RespondDebugInput();
+
         if (state == State.Alive)
         {
             RespondThrustInput();
             RespondRotateInput();
         }
+    }
+
+    private void RespondDebugInput()
+    {
+        if (Input.GetKeyUp(KeyCode.L))
+            LoadNextScene();
+
+        if (Input.GetKeyUp(KeyCode.C))
+            collisionEnabled = !collisionEnabled;
     }
 
     private void RespondRotateInput()
