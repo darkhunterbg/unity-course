@@ -22,9 +22,38 @@ public class Rocket : MonoBehaviour
 
     private void ProcesInput()
     {
+        bool isThrusting = Thrust();
+
+        //if (isThrusting)
+            Rotate();
+    }
+
+    private void Rotate()
+    {
+        const float rotationSpeed = 30.0f;
+
+        rigidBbody.freezeRotation = true;
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            transform.Rotate(Vector3.back, rotationSpeed * Time.deltaTime);
+        }
+
+        rigidBbody.freezeRotation = false;
+    }
+
+    private bool Thrust()
+    {
+        bool thrust = false;
+
         if (Input.GetKey(KeyCode.Space))
         {
             rigidBbody.AddRelativeForce(Vector3.up);
+            thrust = true;
             if (!engineSound.isPlaying)
                 engineSound.Play();
         }
@@ -34,13 +63,6 @@ public class Rocket : MonoBehaviour
                 engineSound.Stop();
         }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Rotate(Vector3.forward, 10 * Time.deltaTime);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            transform.Rotate(Vector3.forward, -10 * Time.deltaTime);
-        }
+        return thrust;
     }
 }
