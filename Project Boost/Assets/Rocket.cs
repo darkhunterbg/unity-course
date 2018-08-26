@@ -60,20 +60,32 @@ public class Rocket : MonoBehaviour
             case "Friendly":
                 break;
             case "Finish":
-                state = State.Transcending;
-                audioSource.PlayOneShot(finish);
-           
-                finishParticles.Play();
-                Invoke(nameof(LoadNextScene), 1.0f);
+                SuccessSequence();
                 break;
             default:
-                state = State.Dying;
-                audioSource.Stop();
-                audioSource.PlayOneShot(death);
-                deathParticles.Play();
-                Invoke(nameof(LoadFisrtLevel), 1.0f);
+                DeathSequence();
                 break;
         }
+    }
+
+    private void DeathSequence()
+    {
+        state = State.Dying;
+        audioSource.Stop();
+        audioSource.PlayOneShot(death);
+        mainEngineParticles.Stop();
+        deathParticles.Play();
+        Invoke(nameof(LoadFisrtLevel), 1.0f);
+    }
+
+    private void SuccessSequence()
+    {
+        state = State.Transcending;
+        audioSource.Stop();
+        audioSource.PlayOneShot(finish);
+        mainEngineParticles.Stop();
+        finishParticles.Play();
+        Invoke(nameof(LoadNextScene), 1.0f);
     }
 
     private void LoadFisrtLevel()
@@ -93,11 +105,6 @@ public class Rocket : MonoBehaviour
             RespondThrustInput();
             RespondRotateInput();
         }
-        else
-        {
-            mainEngineParticles.Stop();
-        }
-    
     }
 
     private void RespondRotateInput()
