@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3254fcd3342e5b4582787589d36afd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 5
+  delay: 2
   sceneName: Level 1
 --- !u!1 &2030141873
 GameObject:

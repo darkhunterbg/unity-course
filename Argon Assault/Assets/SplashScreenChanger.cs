@@ -10,6 +10,11 @@ public class SplashScreenChanger : MonoBehaviour {
     [SerializeField] float delay;
     [SerializeField] string sceneName;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
 	// Use this for initialization
 	void Start () {
         Invoke(nameof(LoadLevel), delay);	
