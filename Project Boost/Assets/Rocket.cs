@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[DisallowMultipleComponent]
 public class Rocket : MonoBehaviour
 {
     [SerializeField]
@@ -131,7 +132,7 @@ public class Rocket : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-             ApplyThrust();
+            ApplyThrust();
         }
         else
         {
