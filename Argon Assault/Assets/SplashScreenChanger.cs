@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 [DisallowMultipleComponent]
 public class SplashScreenChanger : MonoBehaviour {
 
-    [SerializeField] float delay;
-    [SerializeField] string sceneName;
+    [SerializeField] float delay = 2.0f;
+    [SerializeField] string sceneName = null;
 
     void Awake()
     {
@@ -17,8 +17,9 @@ public class SplashScreenChanger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Invoke(nameof(LoadLevel), delay);	
-	}
+        Invoke("LoadLevel", delay);	
+
+    }
 
     private void LoadLevel()
     {
