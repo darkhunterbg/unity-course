@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xSpeed: 10
   ySpeed: 4
+  clamp: {x: 5, y: 2.5}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
