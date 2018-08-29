@@ -25,13 +25,13 @@ public class Player : MonoBehaviour
 
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
 
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
@@ -40,11 +40,20 @@ public class Player : MonoBehaviour
         ProcessRotation();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("Player collided");
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        print("Player triggered");
+    }
+
     private void ProcessRotation()
     {
         float pitch = transform.localPosition.y * positionPitchFactor + yThrow * controlPitchFactor;
         float yaw = transform.localPosition.x * positionYawFactor;// + xThrow;* controlYawFactor;
-        float row = xThrow *controlRollFactor;
+        float row = xThrow * controlRollFactor;
 
         transform.localRotation = Quaternion.Euler(pitch, yaw, row);
     }
