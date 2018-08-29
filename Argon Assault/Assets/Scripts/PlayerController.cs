@@ -3,51 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
+    [Header("General")]
+    [Tooltip("In ms^-1")] [SerializeField] float xSpeed = 20.0f;
+    [Tooltip("In ms^-1")] [SerializeField] float ySpeed = 8.0f;
 
-    [Tooltip("In ms^-1")] [SerializeField] float xSpeed = 10.0f;
-    [Tooltip("In ms^-1")] [SerializeField] float ySpeed = 4.0f;
+    [SerializeField] Vector2 range = new Vector2(6,4);
 
-    [SerializeField] Vector2 clamp = new Vector2(5, 2);
-    [SerializeField] float yawScale = 1.0f;
-
+    [Header("Screen-position based")]
     [SerializeField] float positionPitchFactor = -5.0f;
-    [SerializeField] float controlPitchFactor = -30.0f;
-
     [SerializeField] float positionYawFactor = 5.0f;
-    // [SerializeField] float controlYawFactor = -5.0f;
 
+    [Header("Control-throw based")]
     [SerializeField] float controlRollFactor = 30.0f;
+    [SerializeField] float controlPitchFactor = -30.0f;
 
     float xThrow = 0;
     float yThrow = 0;
 
+    bool controlEnabled = true;
 
-    // Use this for initialization
-    private void Start()
+
+    public void OnPlayerDeath()
     {
-
+        controlEnabled = false;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
-        yThrow = CrossPlatformInputManager.GetAxis("Vertical");
+        if (controlEnabled)
+        {
+            xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
+            yThrow = CrossPlatformInputManager.GetAxis("Vertical");
 
-        ProcessTranslation();
-        ProcessRotation();
+            ProcessTranslation();
+            ProcessRotation();
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        print("Player collided");
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        print("Player triggered");
-    }
 
     private void ProcessRotation()
     {
@@ -63,8 +58,8 @@ public class Player : MonoBehaviour
         float xOffset = xThrow * xSpeed * Time.deltaTime;
         float yOffset = yThrow * ySpeed * Time.deltaTime;
 
-        float newXPos = Mathf.Clamp(transform.localPosition.x + xOffset, -clamp.x, clamp.x);
-        float newYPos = Mathf.Clamp(transform.localPosition.y + yOffset, -clamp.y, clamp.y);
+        float newXPos = Mathf.Clamp(transform.localPosition.x + xOffset, -range.x, range.x);
+        float newYPos = Mathf.Clamp(transform.localPosition.y + yOffset, -range.y, range.y);
 
         transform.localPosition = new Vector3(newXPos, newYPos, transform.localPosition.z);
     }
