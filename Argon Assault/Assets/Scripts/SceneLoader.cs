@@ -1,24 +1,19 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [DisallowMultipleComponent]
-public class SplashScreenChanger : MonoBehaviour {
-
+public class SceneLoader : MonoBehaviour
+{
     [SerializeField] float delay = 2.0f;
     [SerializeField] string sceneName = null;
 
-    void Awake()
+
+    // Use this for initialization
+    void Start()
     {
-        DontDestroyOnLoad(gameObject);
-    }
-
-	// Use this for initialization
-	void Start () {
-        Invoke("LoadLevel", delay);	
-
+        Invoke(nameof(LoadLevel), delay);
     }
 
     private void LoadLevel()
@@ -27,7 +22,8 @@ public class SplashScreenChanger : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-		
-	}
+    void Update()
+    {
+
+    }
 }
