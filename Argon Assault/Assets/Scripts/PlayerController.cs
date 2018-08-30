@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("In ms^-1")] [SerializeField] float xSpeed = 20.0f;
     [Tooltip("In ms^-1")] [SerializeField] float ySpeed = 8.0f;
 
-    [SerializeField] Vector2 range = new Vector2(6,4);
+    [SerializeField] Vector2 range = new Vector2(6, 4);
 
     [Header("Screen-position based")]
     [SerializeField] float positionPitchFactor = -5.0f;
@@ -22,11 +22,17 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject deathFX = null;
 
+    [SerializeField] GameObject[] guns = null;
+
     float xThrow = 0;
     float yThrow = 0;
 
     bool controlEnabled = true;
+    bool isShooting = false;
 
+    Scoreboard scoreboard;
+
+    private int time;
 
     public void OnPlayerDeath()
     {
@@ -34,24 +40,72 @@ public class PlayerController : MonoBehaviour
         deathFX?.SetActive(true);
         var camera = GameObject.Find("Main Camera");
         camera.GetComponent<MonoBehaviour>().enabled = false;
-      //  Destroy(gameObject);
+        //  Destroy(gameObject);
     }
 
+    private void Start()
+    {
+        scoreboard = FindObjectOfType<Scoreboard>();
+        time = (int)Time.realtimeSinceStartup;
 
+        foreach (GameObject gun in guns)
+            gun.GetComponent<ParticleSystem>().Stop();
+    }
 
     // Update is called once per frame
     private void Update()
     {
+        bool fire = false;
+
         if (controlEnabled)
         {
+            UpdateScore();
             xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
             yThrow = CrossPlatformInputManager.GetAxis("Vertical");
 
             ProcessTranslation();
             ProcessRotation();
+
+            fire = CrossPlatformInputManager.GetButton("Fire");
+            if (fire)
+                ProcessFiring();
+        }
+
+        if (!fire)
+            ProcessStopFiring();
+    }
+
+
+
+    private void UpdateScore()
+    {
+        int deltaSeconds = (int)Time.realtimeSinceStartup - (int)time;
+        if (deltaSeconds > 0)
+        {
+            scoreboard.Score(deltaSeconds);
+            time += deltaSeconds;
         }
     }
 
+    private void ProcessFiring()
+    {
+        if (!isShooting)
+        {
+            foreach (GameObject gun in guns)
+                gun.GetComponent<ParticleSystem>().Play(false);
+            isShooting = true;
+        }
+
+    }
+    private void ProcessStopFiring()
+    {
+        if (isShooting)
+        {
+            foreach (GameObject gun in guns)
+                gun.GetComponent<ParticleSystem>().Stop(false, ParticleSystemStopBehavior.StopEmitting);
+            isShooting = false;
+        }
+    }
 
     private void ProcessRotation()
     {
