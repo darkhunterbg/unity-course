@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float controlRollFactor = 30.0f;
     [SerializeField] float controlPitchFactor = -30.0f;
 
+    [SerializeField] GameObject deathFX = null;
+
     float xThrow = 0;
     float yThrow = 0;
 
@@ -28,7 +31,12 @@ public class PlayerController : MonoBehaviour
     public void OnPlayerDeath()
     {
         controlEnabled = false;
+        deathFX?.SetActive(true);
+        var camera = GameObject.Find("Main Camera");
+        camera.GetComponent<MonoBehaviour>().enabled = false;
     }
+
+
 
     // Update is called once per frame
     private void Update()

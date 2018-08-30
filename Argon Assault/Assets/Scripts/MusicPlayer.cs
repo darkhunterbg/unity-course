@@ -9,7 +9,12 @@ public class MusicPlayer : MonoBehaviour
 {
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        MusicPlayer[] musicPlayers = FindObjectsOfType<MusicPlayer>();
+
+        if (musicPlayers.Length > 1)
+            Destroy(gameObject);
+        else
+            DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
