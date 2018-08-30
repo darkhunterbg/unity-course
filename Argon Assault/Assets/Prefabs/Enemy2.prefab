@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4780539788925552}
   - component: {fileID: 33957990736015076}
   - component: {fileID: 23618185324199058}
-  - component: {fileID: 65863213592425644}
+  - component: {fileID: 114864929825390034}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Untagged
@@ -35,13 +35,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1733329464083692}
-  m_LocalRotation: {x: 0.46087652, y: 0.50103337, z: 0.5985892, w: -0.422196}
-  m_LocalPosition: {x: 65.86, y: -14.69, z: 45.29}
+  m_LocalRotation: {x: 0.42493898, y: 0.524956, z: 0.62461424, w: -0.39205253}
+  m_LocalPosition: {x: 53.71, y: -14.689999, z: 54.22998}
   m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -81.489006, y: 60.395004, z: 197.13899}
+  m_LocalEulerAnglesHint: {x: -81.489006, y: 53.664, z: 197.13899}
 --- !u!23 &23618185324199058
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -84,15 +84,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1733329464083692}
   m_Mesh: {fileID: 4300002, guid: ec2ed6fafcc53c64ba923b9ef7d5749f, type: 3}
---- !u!65 &65863213592425644
-BoxCollider:
+--- !u!114 &114864929825390034
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1733329464083692}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.64664847, y: 0.633128, z: 0.09151086}
-  m_Center: {x: -0.0000019073486, y: 0, z: -0.00000011920929}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c075437dabdc04cab19a146ff1fd0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathFX: {fileID: 1465075854687706, guid: 234f0298e6b511f418a27973cecc053f, type: 2}
+  parent: {fileID: 0}
