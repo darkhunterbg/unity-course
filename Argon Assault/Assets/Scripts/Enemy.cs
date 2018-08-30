@@ -28,9 +28,9 @@ public class Enemy : MonoBehaviour
         GameObject fx = Instantiate(deathFX, gameObject.transform.position, Quaternion.identity) as GameObject;
         fx.transform.parent = parent;
 
+        FindObjectOfType<Scoreboard>().ScoreHit();
+
         Destroy(gameObject);
-        //GameObject obj = new GameObject($"{gameObject.name}'s explosion");
-        //obj.transform.position = gameObject.transform.position;
-        //obj.AddComponent<ParticleSystem>()
+     
     }
 }
