@@ -7,8 +7,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject deathFX = null;
     [SerializeField] Transform parent = null;
     [SerializeField] int scoreHit = 12;
+    [SerializeField] int hp = 10;
 
-    bool deathTriggered = false;
+    bool deathTriggerd = false;
 
     Scoreboard scoreboard;
 
@@ -28,12 +29,19 @@ public class Enemy : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if (deathTriggered)
+        if (deathTriggerd)
             return;
 
-        deathTriggered = true;
+        --hp;
 
-        print($"Particles collided with enemy {other.name}");
+        if (hp <= 0)
+            Kill();
+
+    }
+
+    private void Kill()
+    {
+        deathTriggerd = true;
 
         GameObject fx = Instantiate(deathFX, gameObject.transform.position, Quaternion.identity) as GameObject;
         fx.transform.parent = parent;
@@ -41,6 +49,5 @@ public class Enemy : MonoBehaviour
         scoreboard.Score(scoreHit);
 
         Destroy(gameObject);
-     
     }
 }
