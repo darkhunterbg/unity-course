@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23618185324199058}
   - component: {fileID: 114864929825390034}
   m_Layer: 0
-  m_Name: Enemy2
+  m_Name: Falcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,4 +98,4 @@ MonoBehaviour:
   deathFX: {fileID: 1465075854687706, guid: 234f0298e6b511f418a27973cecc053f, type: 2}
   parent: {fileID: 0}
   scoreHit: 12
-  hp: 12
+  hp: 5
