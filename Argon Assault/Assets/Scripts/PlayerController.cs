@@ -38,8 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         controlEnabled = false;
         deathFX?.SetActive(true);
-        var camera = GameObject.Find("Main Camera");
-        camera.GetComponent<MonoBehaviour>().enabled = false;
+
         //  Destroy(gameObject);
     }
 
