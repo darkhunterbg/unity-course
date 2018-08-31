@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     {
         controlEnabled = false;
         deathFX?.SetActive(true);
+        GetComponentInParent<Animator>().enabled = false;
+        GetComponent<MeshRenderer>().enabled = false;
 
         //  Destroy(gameObject);
     }

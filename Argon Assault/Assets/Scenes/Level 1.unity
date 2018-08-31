@@ -14,12 +14,12 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
+  m_Fog: 1
+  m_FogColor: {r: 0.21698111, g: 0.033775363, b: 0.1777227, a: 1}
+  m_FogMode: 1
   m_FogDensity: 0.01
   m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_LinearFogEnd: 500
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -175,6 +175,31 @@ Prefab:
     - target: {fileID: 4299724683546834, guid: fde598fd045c59642a36a8d96f50daf1, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198860162290214194, guid: fde598fd045c59642a36a8d96f50daf1,
+        type: 2}
+      propertyPath: TriggerModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198860162290214194, guid: fde598fd045c59642a36a8d96f50daf1,
+        type: 2}
+      propertyPath: CollisionModule.m_Bounce.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198860162290214194, guid: fde598fd045c59642a36a8d96f50daf1,
+        type: 2}
+      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198860162290214194, guid: fde598fd045c59642a36a8d96f50daf1,
+        type: 2}
+      propertyPath: CollisionModule.maxKillSpeed
+      value: 10000.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 198860162290214194, guid: fde598fd045c59642a36a8d96f50daf1,
+        type: 2}
+      propertyPath: CollisionModule.minKillSpeed
+      value: 211
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde598fd045c59642a36a8d96f50daf1, type: 2}
