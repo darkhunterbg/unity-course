@@ -11,6 +11,10 @@ public class Waypoint : MonoBehaviour
     public int GridSize => gridSize;
     public Vector2Int GridPos => gridPos;
 
+    public bool IsExplored;
+
+    public Waypoint exploredFrom;
+
     public void SetGridPosFromWorldPos(Vector3 position)
     {
         gridPos.x = Mathf.RoundToInt(position.x / gridSize);
