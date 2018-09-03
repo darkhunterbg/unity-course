@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Waypoint : MonoBehaviour {
+public class Waypoint : MonoBehaviour
+{
+    const int gridSize = 10;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    Vector2Int gridPos = Vector2Int.zero;
+
+    public int GridSize => gridSize;
+    public Vector2Int GridPos => gridPos;
+
+    public void SetGridPosFromWorldPos(Vector3 position)
+    {
+        gridPos.x = Mathf.RoundToInt(position.x / gridSize);
+        gridPos.y = Mathf.RoundToInt(position.z / gridSize);
+    }
 }

@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 33146316886378098}
   - component: {fileID: 23783823008212046}
   - component: {fileID: 64088812630197864}
-  - component: {fileID: 114007683896920848}
   m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
@@ -280,7 +279,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 236326e0c2b2c3843846507ebf4c3933, type: 2}
+  - {fileID: 2100000, guid: 8bcf7f73dab2e6740be71590f8035bcd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -315,7 +314,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 8bcf7f73dab2e6740be71590f8035bcd, type: 2}
+  - {fileID: 2100000, guid: cd38192ccfcde0a4fa7ef6292970c40b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -657,17 +656,6 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4278190080
---- !u!114 &114007683896920848
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083917322507796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a747c8bba1d3a147bcfdf729770e086, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114044783408421560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -679,7 +667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e9bde86a2da2848a51c1ac9ef7f36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: 10
 --- !u!114 &114156179679021110
 MonoBehaviour:
   m_ObjectHideFlags: 1

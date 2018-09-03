@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour {
+public class EnemyMovement : MonoBehaviour
+{
 
     [SerializeField]
     List<Waypoint> path = new List<Waypoint>();
 
-	// Use this for initialization
-	void Start () {
-        StartCoroutine(VisitWaypoints());
-	}
-	
+    void Start()
+    {
+       //W StartCoroutine(VisitWaypoints());
+    }
+
     IEnumerator VisitWaypoints()
     {
         print("Starting patrol...");
 
-        foreach(Waypoint waypoint in path)
+        foreach (Waypoint waypoint in path)
         {
             transform.position = waypoint.transform.position;
             print($"Visiting:{waypoint.name}");
@@ -25,9 +26,4 @@ public class EnemyMovement : MonoBehaviour {
 
         print("Ending patrol");
     }
-
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
