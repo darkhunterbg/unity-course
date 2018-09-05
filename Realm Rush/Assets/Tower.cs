@@ -14,15 +14,8 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-        bool shouldShoot = false;
-
-        if (targetEnemy != null)
-        {
-            float distance = Vector3.Distance(targetEnemy.position, objectToPan.position);
-
-            shouldShoot = distance <= attackRange;
-
-        }
+        SetTarget();
+        bool shouldShoot = targetEnemy != null;
 
         if (shouldShoot)
             Shoot();
@@ -30,11 +23,44 @@ public class Tower : MonoBehaviour
             StopShooting();
     }
 
+    private void SetTarget()
+    {
+        bool needsTarget = targetEnemy == null;
+
+        if (targetEnemy != null)
+        {
+            float distance = Vector3.Distance(targetEnemy.position, objectToPan.position);
+            if (distance < attackRange)
+                return;
+            else
+                needsTarget = true;
+        }
+
+        if (needsTarget)
+        {
+            Enemy selected = null;
+            float selectedDistance = float.MaxValue;
+
+            foreach (Enemy enemy in FindObjectsOfType<Enemy>())
+            {
+                float distance = Vector3.Distance(enemy.transform.position, objectToPan.position);
+                if(distance< attackRange && selectedDistance > distance)
+                {
+                    selectedDistance = distance;
+                    selected = enemy;
+                }
+            }
+
+            if (selected != null)
+                targetEnemy = selected.transform;
+        }
+    }
+
     private void Shoot()
     {
         if (attackFX.isStopped)
             attackFX.Play();
-        objectToPan.LookAt(targetEnemy.position+new Vector3(0, floatYOffset,0));
+        objectToPan.LookAt(targetEnemy.position + new Vector3(0, floatYOffset, 0));
     }
 
     private void StopShooting()

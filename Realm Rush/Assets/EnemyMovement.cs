@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    void Start()
-    {
-        Invoke(nameof(StartMoving), 0.1f);
-    }
 
-    private void StartMoving()
+
+    public void StartMoving()
     {
         Pathfinder pathfinder = FindObjectOfType<Pathfinder>();
 
