@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour {
 
     [SerializeField] int hp = 100;
 
-
     bool deathTriggerd = false;
 
     private void OnParticleCollision(GameObject other)

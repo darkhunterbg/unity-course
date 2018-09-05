@@ -6,11 +6,7 @@ using UnityEngine;
 public class Pathfinder : MonoBehaviour
 {
     [SerializeField]
-    Waypoint startWaypoint = null;
-
-    [SerializeField]
     Waypoint endWaypoint = null;
-
 
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
     Vector2Int[] directions = new Vector2Int[]
@@ -28,23 +24,27 @@ public class Pathfinder : MonoBehaviour
     void Start()
     {
         LoadBlocks();
-        ColorStartAndEnd();
     }
 
-    public List<Waypoint> GetPath()
+    public Waypoint GetWaypointAtPosition(Vector3 worldPos)
     {
-        BreathFirstSearch();
-        GeneratePath();
+        Waypoint result = null;
+
+        Vector2Int gridPos = Waypoint.GetGridPosition(worldPos);
+
+        grid.TryGetValue(gridPos, out result);
+
+        return result;
+    }
+
+    public List<Waypoint> GetPath(Waypoint startWaypoint )
+    {
+        BreathFirstSearch(startWaypoint);
+        GeneratePath(startWaypoint);
         return path;
     }
 
-    private void ColorStartAndEnd()
-    {
-        startWaypoint.SetTopColor(Color.green);
-        endWaypoint.SetTopColor(Color.red);
-    }
-
-    private void BreathFirstSearch()
+    private void BreathFirstSearch(Waypoint startWaypoint)
     {
         foreach (Waypoint waypoint in grid.Values)
         {
@@ -54,6 +54,8 @@ public class Pathfinder : MonoBehaviour
         queue.Clear();
 
         queue.Enqueue(startWaypoint);
+
+        isRunning = true;
 
         List<Waypoint> explored = new List<Waypoint>();
 
@@ -82,7 +84,7 @@ public class Pathfinder : MonoBehaviour
         }
     }
 
-    private void GeneratePath()
+    private void GeneratePath(Waypoint startWaypoint)
     {
         path.Clear();
         Waypoint wp = endWaypoint;

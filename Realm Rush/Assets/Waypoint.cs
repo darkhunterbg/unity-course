@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
-    const int gridSize = 10;
+    public const int gridSize = 10;
 
     Vector2Int gridPos = Vector2Int.zero;
 
@@ -15,10 +15,16 @@ public class Waypoint : MonoBehaviour
 
     public Waypoint exploredFrom;
 
+    public static Vector2Int GetGridPosition(Vector3 position)
+    {
+        return new Vector2Int(Mathf.RoundToInt(position.x / gridSize),
+         Mathf.RoundToInt(position.z / gridSize));
+    }
+
+
     public void SetGridPosFromWorldPos(Vector3 position)
     {
-        gridPos.x = Mathf.RoundToInt(position.x / gridSize);
-        gridPos.y = Mathf.RoundToInt(position.z / gridSize);
+        gridPos = GetGridPosition(position);
     }
 
     public void SetTopColor(Color color)

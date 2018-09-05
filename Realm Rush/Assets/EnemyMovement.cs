@@ -12,13 +12,16 @@ public class EnemyMovement : MonoBehaviour
     private void StartMoving()
     {
         Pathfinder pathfinder = FindObjectOfType<Pathfinder>();
-        var path = pathfinder.GetPath();
+
+        Waypoint waypoint = pathfinder.GetWaypointAtPosition(transform.position);
+
+        var path = pathfinder.GetPath(waypoint).ToArray();
 
         StartCoroutine(FollowPath(path));
     }
 
 
-    IEnumerator FollowPath(List<Waypoint> path)
+    IEnumerator FollowPath(IEnumerable<Waypoint> path)
     {
 
         foreach (Waypoint waypoint in path)
