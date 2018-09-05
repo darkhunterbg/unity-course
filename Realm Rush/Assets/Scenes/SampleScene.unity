@@ -161,6 +161,26 @@ Prefab:
       propertyPath: m_Text
       value: 3,0
       objectReference: {fileID: 0}
+    - target: {fileID: 65680287752764364, guid: 9c8861b5daabc7c43888f41e5710a22a,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 65680287752764364, guid: 9c8861b5daabc7c43888f41e5710a22a,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 65680287752764364, guid: 9c8861b5daabc7c43888f41e5710a22a,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 65680287752764364, guid: 9c8861b5daabc7c43888f41e5710a22a,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8861b5daabc7c43888f41e5710a22a, type: 2}
   m_IsPrefabAsset: 0

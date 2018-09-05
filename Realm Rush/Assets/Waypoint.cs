@@ -11,9 +11,11 @@ public class Waypoint : MonoBehaviour
     public int GridSize => gridSize;
     public Vector2Int GridPos => gridPos;
 
-    public bool IsExplored;
+    public bool IsExplored = false;
 
-    public Waypoint exploredFrom;
+    public Waypoint exploredFrom = null;
+
+    public bool isPlacable = true;
 
     public static Vector2Int GetGridPosition(Vector3 position)
     {
@@ -31,5 +33,11 @@ public class Waypoint : MonoBehaviour
     {
         MeshRenderer meshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
         meshRenderer.material.color = color;
+    }
+
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonUp(0) && isPlacable)
+            print($"Mouse over {gameObject.name}");
     }
 }

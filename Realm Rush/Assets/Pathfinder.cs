@@ -37,7 +37,7 @@ public class Pathfinder : MonoBehaviour
         return result;
     }
 
-    public List<Waypoint> GetPath(Waypoint startWaypoint )
+    public List<Waypoint> GetPath(Waypoint startWaypoint)
     {
         BreathFirstSearch(startWaypoint);
         GeneratePath(startWaypoint);
