@@ -7,8 +7,9 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField] int hp = 100;
-    [SerializeField] GameObject hitPrefab = null;
-    [SerializeField] GameObject deathPrefab = null;
+    [SerializeField] ParticleSystem hitPrefab = null;
+    [SerializeField] ParticleSystem deathPrefab = null;
+    [SerializeField] ParticleSystem damagePrefab = null;
 
     bool deathTriggerd = false;
 
@@ -22,23 +23,25 @@ public class Enemy : MonoBehaviour
         --hp;
 
         if (hp <= 0)
-            Kill();
+            Kill(deathPrefab);
     }
 
-    private void Kill()
+    private void Kill(ParticleSystem vfx)
     {
-        StartCoroutine(SpawnDeathFx());
+        deathTriggerd = true;
 
-        deathTriggerd = transform;
+        ParticleSystem deathFx = Instantiate(vfx, transform.position + vfx.transform.position, Quaternion.identity);
+        Destroy(deathFx.gameObject, vfx.main.duration);
+
         Destroy(gameObject);
 
 
     }
 
-    IEnumerator SpawnDeathFx()
+
+    public void Damage()
     {
-        GameObject deathFx = Instantiate(deathPrefab, transform.position + deathPrefab.transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(6);
-        Destroy(deathFx);
+        Kill(damagePrefab);
     }
+ 
 }

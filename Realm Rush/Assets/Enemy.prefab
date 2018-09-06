@@ -36,8 +36,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4325144779411924}
-  - component: {fileID: 114941252760776250}
   - component: {fileID: 65929665405858634}
+  - component: {fileID: 114941252760776250}
   - component: {fileID: 114751452736885952}
   m_Layer: 0
   m_Name: Enemy
@@ -139,8 +139,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 50
-  hitPrefab: {fileID: 1505610324796538, guid: dcf9cd10c07cf0c49863969befadb243, type: 2}
-  deathPrefab: {fileID: 1929956291960174, guid: 1a51bfda454239a41afb7dee687c6ac0,
+  hitPrefab: {fileID: 198801791596541968, guid: dcf9cd10c07cf0c49863969befadb243,
+    type: 2}
+  deathPrefab: {fileID: 198537984209914932, guid: 1a51bfda454239a41afb7dee687c6ac0,
+    type: 2}
+  damagePrefab: {fileID: 198847405949779186, guid: ddf69562b237a464ebae81eada9d39cb,
     type: 2}
 --- !u!114 &114941252760776250
 MonoBehaviour:
@@ -153,3 +156,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a78b55f4f2516da4dab0d793a44dbe3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocity: 15

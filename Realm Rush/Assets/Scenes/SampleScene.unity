@@ -723,7 +723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc865cf42780b547adb06fab43b9a9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsBetweenSpawns: 3
+  secondsBetweenSpawns: 0.75
   enemy: {fileID: 1654217297392730, guid: 3f62f9e76e5e82446972bed96af2f512, type: 2}
   spawnWaypoints:
   - {fileID: 528179646}
