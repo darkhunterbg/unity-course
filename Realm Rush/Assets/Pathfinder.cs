@@ -119,6 +119,7 @@ public class Pathfinder : MonoBehaviour
         Waypoint[] waypoints = FindObjectsOfType<Waypoint>();
         foreach (Waypoint waypoint in waypoints)
         {
+            waypoint.transform.Find("Top").Find("Label").gameObject.SetActive(false);
             if (grid.ContainsKey(waypoint.GridPos))
             {
                 Debug.LogError($"Waypoint in position {waypoint.GridPos} already exists!");

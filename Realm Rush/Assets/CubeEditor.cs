@@ -6,13 +6,13 @@ using UnityEngine;
 [SelectionBase]
 public class CubeEditor : MonoBehaviour
 {
-
     Waypoint waypoint;
 
     private void Awake()
     {
         waypoint = GetComponent<Waypoint>();
         waypoint.SetGridPosFromWorldPos(transform.position);
+        transform.hasChanged = false;
     }
     void Update()
     {

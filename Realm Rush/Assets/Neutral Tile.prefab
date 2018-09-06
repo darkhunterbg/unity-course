@@ -313,3 +313,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsExplored: 0
   exploredFrom: {fileID: 0}
+  isPlacable: 1
