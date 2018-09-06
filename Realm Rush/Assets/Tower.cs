@@ -12,6 +12,8 @@ public class Tower : MonoBehaviour
 
     [SerializeField] float floatYOffset = 6;
 
+    public Waypoint OccupiedWaypoint { get; set; }
+
     void Update()
     {
         SetTarget();

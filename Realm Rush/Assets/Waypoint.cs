@@ -35,9 +35,12 @@ public class Waypoint : MonoBehaviour
         meshRenderer.material.color = color;
     }
 
+
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonUp(0) && isPlacable)
-            print($"Mouse over {gameObject.name}");
+        {
+            FindObjectOfType<Player>().CreateTower(this);
+        }
     }
 }
