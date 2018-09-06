@@ -7,10 +7,9 @@ public class EnemySpawner : MonoBehaviour
 {
 
     [SerializeField] [Range(0.1f, 10.0f)] float secondsBetweenSpawns = 1.0f;
-
     [SerializeField] GameObject enemy = null;
-
     [SerializeField] Waypoint[] spawnWaypoints = new Waypoint[0];
+    [SerializeField] AudioClip spawnEnemySFX;
 
     Pathfinder pathfinder = null;
 
@@ -50,6 +49,8 @@ public class EnemySpawner : MonoBehaviour
         GameObject newEnemy = Instantiate(enemy, transform) as GameObject;
         newEnemy.transform.position = spawnPoint.transform.position;
         newEnemy.GetComponent<EnemyMovement>().StartMoving();
+
+        GetComponent<AudioSource>().PlayOneShot(spawnEnemySFX);
 
         FindObjectOfType<Player>().AddScore(1);
     }

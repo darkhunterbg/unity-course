@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] Text HPUI = null;
     [SerializeField] Text ScoreUI = null;
 
+    [SerializeField] AudioClip damageSFX = null;
+
     private int score;
 
     private Queue<GameObject> towers = new Queue<GameObject>();
@@ -47,10 +49,12 @@ public class Player : MonoBehaviour
     {
         baseHP -= damage;
         HPUI.text = baseHP.ToString();
+        GetComponent<AudioSource>().PlayOneShot(damageSFX);
     }
     public void AddScore(int score)
     {
         this.score += score;
         ScoreUI.text = this.score.ToString();
+        
     }
 }

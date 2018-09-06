@@ -145,6 +145,7 @@ MonoBehaviour:
     type: 2}
   damagePrefab: {fileID: 198847405949779186, guid: ddf69562b237a464ebae81eada9d39cb,
     type: 2}
+  deathSFX: {fileID: 8300000, guid: 220238dfb79e96d48a6475d0c217af10, type: 3}
 --- !u!114 &114941252760776250
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] ParticleSystem deathPrefab = null;
     [SerializeField] ParticleSystem damagePrefab = null;
 
+    [SerializeField] AudioClip deathSFX = null;
+
     bool deathTriggerd = false;
 
     private void OnParticleCollision(GameObject other)
@@ -33,6 +35,7 @@ public class Enemy : MonoBehaviour
         ParticleSystem deathFx = Instantiate(vfx, transform.position + vfx.transform.position, Quaternion.identity);
         Destroy(deathFx.gameObject, vfx.main.duration);
 
+
         Destroy(gameObject);
 
 
@@ -44,5 +47,5 @@ public class Enemy : MonoBehaviour
         Kill(damagePrefab);
         FindObjectOfType<Player>().DamageBase(1);
     }
- 
+
 }
