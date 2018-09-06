@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour
     public void Damage()
     {
         Kill(damagePrefab);
+        FindObjectOfType<Player>().DamageBase(1);
     }
  
 }

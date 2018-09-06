@@ -40,10 +40,6 @@ public class EnemyMovement : MonoBehaviour
             while (Vector3.Magnitude(direction) > step);
             transform.position = endPos;
 
-            
-
-           // yield return new WaitForSeconds(movementDelay);
-    
         }
 
         yield return new WaitForSeconds(0.1f);

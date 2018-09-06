@@ -50,12 +50,9 @@ public class EnemySpawner : MonoBehaviour
         GameObject newEnemy = Instantiate(enemy, transform) as GameObject;
         newEnemy.transform.position = spawnPoint.transform.position;
         newEnemy.GetComponent<EnemyMovement>().StartMoving();
+
+        FindObjectOfType<Player>().AddScore(1);
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
